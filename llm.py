@@ -17,11 +17,13 @@ def _render(name: str, **values: str) -> str:
 
 
 def _ask_json(api_key: str, model: str, contents: list) -> dict:
-    resp = genai.Client(api_key=api_key).models.generate_content(
-        model=model,
-        contents=contents,
-        config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.4),
-    )
+    # 클라이언트를 변수로 잡아 둬야 요청 전에 닫히지 않는다(google-genai 3.x).
+    with genai.Client(api_key=api_key) as client:
+        resp = client.models.generate_content(
+            model=model,
+            contents=contents,
+            config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.4),
+        )
     return json.loads(resp.text)
 
 

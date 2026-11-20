@@ -25,7 +25,7 @@ st.set_page_config(page_title="현장단서", layout="wide")
 st.title("현장단서")
 st.caption("설치 사진을 기술의 증거로 · 사진 → 분석 → 근거 매칭 → 생성 → 직원 검수")
 
-if not API_KEY:
+if not API_KEY or API_KEY == "PASTE_YOUR_KEY_HERE":
     st.error("GEMINI_API_KEY가 없습니다. .streamlit/secrets.toml 또는 환경변수에 넣어 주세요.")
     st.stop()
 
