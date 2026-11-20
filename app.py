@@ -1,4 +1,4 @@
-"""현장단서: 설치 사진 → 분석 → 근거 매칭 → 생성 → 검수"""
+"""T-Ad: 설치 사진 → 분석 → 근거 매칭 → 생성 → 검수"""
 import json
 import os
 from pathlib import Path
@@ -21,8 +21,8 @@ def secret(name: str, default: str | None = None) -> str | None:
 API_KEY = secret("GEMINI_API_KEY")
 MODEL = secret("GEMINI_MODEL", "gemini-2.5-flash")
 
-st.set_page_config(page_title="현장단서", layout="wide")
-st.title("현장단서")
+st.set_page_config(page_title="T-Ad", layout="wide")
+st.title("T-Ad")
 st.caption("설치 사진을 기술의 증거로 · 사진 → 분석 → 근거 매칭 → 생성 → 직원 검수")
 
 if not API_KEY or API_KEY == "PASTE_YOUR_KEY_HERE":
@@ -114,5 +114,5 @@ if c:
         st.caption("AI가 사용했다고 밝힌 근거: " + ", ".join(c["used_claims"]))
     st.download_button(
         "검수본 내려받기 (.md)", f"# 블로그\n\n{blog}\n\n# 카드뉴스\n\n{cards}\n",
-        file_name="hyunjang_content.md",
+        file_name="t-ad_content.md",
     )
