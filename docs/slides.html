@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>현장단서 발표 자료 — T-Ad</title>
+<!--
+  수정 후 PDF 만들기 (맥):
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --print-to-pdf=docs/slides.pdf "file://$PWD/docs/slides.html"
+  노란 [ ] 칸은 측정·시연 후 채운다.
+-->
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root { --ink:#16181d; --sub:#5f6470; --line:#e2e4ea; --accent:#2f5bd3; --soft:#eef2fd; --red:#c62828; --redbg:#fde2e1; --green:#1b5e20; --greenbg:#e3f4e8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; color: var(--ink); background: #fff; }
+  .slide { width: 1280px; height: 720px; padding: 64px 80px; position: relative; overflow: hidden; break-after: page; display: flex; flex-direction: column; }
+  .slide:last-child { break-after: auto; }
+  .no { position: absolute; right: 48px; bottom: 32px; font-size: 16px; color: var(--sub); }
+  .kicker { font-size: 18px; font-weight: 700; color: var(--accent); letter-spacing: 1px; margin-bottom: 12px; }
+  h1 { font-size: 64px; margin: 0; letter-spacing: -1.5px; }
+  h2 { font-size: 42px; margin: 0 0 32px; letter-spacing: -1px; line-height: 1.25; }
+  p, li { font-size: 24px; line-height: 1.55; }
+  ul { margin: 0; padding-left: 28px; }
+  li { margin-bottom: 14px; }
+  b { color: var(--accent); }
+  .todo { background: #fff3b0; color: #6b5300; padding: 2px 8px; border-radius: 6px; font-weight: 700; }
+  .cover { justify-content: center; background: linear-gradient(135deg, #ffffff 55%, var(--soft)); }
+  .cover .sub { font-size: 30px; color: var(--sub); margin: 18px 0 40px; }
+  .cover .meta { font-size: 20px; color: var(--sub); }
+  .flow { display: flex; align-items: stretch; gap: 14px; margin: 8px 0 28px; }
+  .flow .step { flex: 1; border: 2px solid var(--accent); border-radius: 14px; padding: 18px 12px; text-align: center; }
+  .flow .step b { display: block; font-size: 22px; margin-bottom: 6px; }
+  .flow .step span { font-size: 16px; color: var(--sub); line-height: 1.4; display: block; }
+  .flow .step.hl { background: var(--accent); }
+  .flow .step.hl b, .flow .step.hl span { color: #fff; }
+  .flow .arr { align-self: center; font-size: 26px; color: var(--sub); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; }
+  .card { background: #f7f8fb; border: 1px solid var(--line); border-radius: 16px; padding: 28px 32px; }
+  .card h3 { margin: 0 0 14px; font-size: 26px; }
+  .card p, .card li { font-size: 21px; }
+  .demo { flex: 1; border: 3px dashed var(--line); border-radius: 18px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--sub); }
+  .demo p { font-size: 22px; margin: 6px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 22px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 16px 14px; text-align: left; }
+  th { color: var(--sub); font-size: 18px; font-weight: 700; }
+  .ok { background: var(--greenbg); color: var(--green); font-weight: 700; padding: 1px 6px; border-radius: 5px; }
+  .bad { background: var(--redbg); color: var(--red); font-weight: 700; padding: 1px 6px; border-radius: 5px; }
+  sup { font-size: 13px; }
+  .quote { font-size: 26px; font-weight: 700; border-left: 6px solid var(--accent); padding-left: 20px; margin: 24px 0 0; }
+  .small { font-size: 17px; color: var(--sub); margin-top: auto; }
+</style>
+</head>
+<body>
+
+<!-- 1. 표지 -->
+<section class="slide cover">
+  <div class="kicker">AI 스마트워크톤 트랙 A · 티링크 과제</div>
+  <h1>현장단서</h1>
+  <div class="sub">설치 사진 한 장을 기술의 증거로.<br>근거 있는 홍보 콘텐츠만 만들고, 근거 없는 수치는 코드가 잡아냅니다.</div>
+  <div class="meta">사진 1건 홍보물: 사람 <span class="todo">[n분]</span> → 현장단서 <span class="todo">[n분]</span> · 팀 T-Ad</div>
+  <div class="no">1</div>
+</section>
+
+<!-- 2. 문제 -->
+<section class="slide">
+  <div class="kicker">문제</div>
+  <h2>기술은 강한데, 보여 줄 것은 단자함 사진뿐입니다</h2>
+  <ul>
+    <li>티링크의 강점은 <b>눈에 보이지 않습니다.</b> 기존 전화기·회선 교체 불필요, 통신사 무관, 좁은 단자함에도 설치.</li>
+    <li>현장 사진은 회색 박스와 케이블. 설치 사례 갤러리는 대부분 <b>업종 태그와 가려진 고객명</b>만 있고, 어떤 문제를 어떤 기술로 풀었는지 설명이 없습니다.</li>
+    <li>학교는 교권 보호, 콜센터는 기록·경영 리포트, 건설 현장은 통역·작업보고. <b>같은 사진도 구매자마다 다시 써야</b> 합니다.</li>
+    <li>생성형 AI에 맡기면 '민원 30% 감소' 같은 <b>근거 없는 수치</b>가 섞여 그대로 올릴 수 없습니다.</li>
+  </ul>
+  <div class="no">2</div>
+</section>
+
+<!-- 3. As-Is -->
+<section class="slide">
+  <div class="kicker">지금 방식 (As-Is)</div>
+  <h2>사진 1건을 홍보물로 만들려면 사람이 전부 합니다</h2>
+  <div class="flow">
+    <div class="step"><b>사진 고르기</b><span>현장에서 받은 사진</span></div><div class="arr">→</div>
+    <div class="step"><b>사진 해석</b><span>무슨 장비, 어떤 형태?</span></div><div class="arr">→</div>
+    <div class="step"><b>자료 찾기</b><span>홈페이지·특허에서 근거</span></div><div class="arr">→</div>
+    <div class="step"><b>업종별 작성</b><span>블로그·카드뉴스를 업종마다</span></div><div class="arr">→</div>
+    <div class="step"><b>과장 검수</b><span>수치·표현 하나하나</span></div>
+  </div>
+  <p>시간이 새는 곳: <b>같은 근거를 매번 다시 찾기</b>, <b>업종마다 다시 쓰기</b>, <b>사람 눈으로 수치 검수</b></p>
+  <p>팀 실측: 사진 1건당 <span class="todo">[n분]</span> (docs/measurement.md)</p>
+  <div class="no">3</div>
+</section>
+
+<!-- 4. To-Be -->
+<section class="slide">
+  <div class="kicker">솔루션 (To-Be)</div>
+  <h2>사진 → 분석 → 근거 매칭 → 생성 → 검수, 한 흐름</h2>
+  <div class="flow">
+    <div class="step"><b>사진 업로드</b><span>노출 확인 체크 필수</span></div><div class="arr">→</div>
+    <div class="step"><b>사진 분석</b><span>AI가 설치 형태·문제 태그 제안</span></div><div class="arr">→</div>
+    <div class="step"><b>직원 확인</b><span>태그·설명 수정</span></div><div class="arr">→</div>
+    <div class="step"><b>업종별 생성</b><span>승인된 근거만 사용</span></div><div class="arr">→</div>
+    <div class="step hl"><b>코드 팩트체크</b><span>근거 없는 수치 빨간색</span></div>
+  </div>
+  <p class="quote">AI는 "무엇이 보이는가"만 제안하고,<br>"무엇을 주장해도 되는가"는 회사가 승인한 지식 베이스가 정합니다.</p>
+  <p class="small">게시 승인은 항상 직원이 합니다.</p>
+  <div class="no">4</div>
+</section>
+
+<!-- 5. 시연 -->
+<section class="slide">
+  <div class="kicker">시연</div>
+  <h2>실제 화면</h2>
+  <div class="demo">
+    <p><span class="todo">[시연 영상 또는 docs/demo.gif 삽입]</span></p>
+    <p>배포 주소: <span class="todo">[Streamlit URL]</span></p>
+    <p>① 노출 확인 체크 → ② 사진 업로드 → ③ 태그 확인 → ④ 생성 → ⑤ '확인 필요' 빨간 표시 → ⑥ 고치면 사라짐</p>
+  </div>
+  <div class="no">5</div>
+</section>
+
+<!-- 6. 구현 방법 -->
+<section class="slide">
+  <div class="kicker">어떻게 만들었나</div>
+  <h2>AI가 AI를 검사하지 않습니다. 규칙으로 검증합니다</h2>
+  <div class="two">
+    <div class="card">
+      <h3>구성</h3>
+      <ul>
+        <li>화면: Python + Streamlit</li>
+        <li>AI: Gemini (사진 분석·글 생성)</li>
+        <li>근거: 제품 지식 베이스 JSON (항목마다 출처)</li>
+        <li>프롬프트 규칙: 보이는 것만 / 근거 목록 밖 수치 금지 / 최상급 표현 금지 / IP·번호 옮겨 적기 금지</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>코드 팩트체크 예시</h3>
+      <p>녹취 성공률 <span class="ok">99%<sup>근거</sup></span>, 최대 <span class="ok">3000석<sup>근거</sup></span>까지 구축.</p>
+      <p>도입 후 민원 <span class="bad">30%<sup>확인 필요</sup></span> 감소, <span class="bad">업계 최고<sup>금지 표현</sup></span> 수준.</p>
+      <p class="small" style="margin-top:18px">수치를 정규식으로 뽑아 '3,000석=3000석', '150만 원=1,500,000원'으로 맞춘 뒤 지식 베이스와 대조합니다.</p>
+    </div>
+  </div>
+  <div class="no">6</div>
+</section>
+
+<!-- 7. 기대 효과 -->
+<section class="slide">
+  <div class="kicker">기대 효과</div>
+  <h2>추정이 아니라 잰 숫자로 말합니다</h2>
+  <table>
+    <tr><th>항목</th><th>사람</th><th>현장단서</th><th>근거</th></tr>
+    <tr><td>사진 1건 홍보물 작성 시간</td><td><span class="todo">[n분]</span></td><td><span class="todo">[n분]</span></td><td>팀 실측 <span class="todo">[n회]</span></td></tr>
+    <tr><td>근거 없는 수치 검출</td><td>사람 눈</td><td><span class="todo">[n건 중 n건 검출]</span></td><td>테스트 기록 (이슈 #7)</td></tr>
+    <tr><td>업종별 메시지 전환</td><td>업종마다 다시 작성</td><td>업종 선택만 바꿔 재생성</td><td>시연 비교 캡처</td></tr>
+  </table>
+  <p class="small">측정 횟수가 적어 연간 절감액 같은 확대 계산은 하지 않았습니다.</p>
+  <div class="no">7</div>
+</section>
+
+<!-- 8. 확산 가능성 -->
+<section class="slide">
+  <div class="kicker">확산 가능성</div>
+  <h2>지식 베이스 파일 하나만 바꾸면 됩니다</h2>
+  <div class="two">
+    <div class="card">
+      <h3>티링크 안에서</h3>
+      <ul>
+        <li>AI 녹취 → 학교용 녹취 → 티링크 온까지 제품만 선택</li>
+        <li>같은 사진을 공공·교육·콜센터·금융·의료·건설 메시지로</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>다른 회사에서</h3>
+      <ul>
+        <li>설치·시공 사진이 쌓이는 B2B 기업</li>
+        <li>예: 보안 장비 설치, 냉난방·공조 시공, 태양광 시공</li>
+        <li>필요한 것: 제품 근거 JSON, 업종 목록</li>
+      </ul>
+    </div>
+  </div>
+  <div class="no">8</div>
+</section>
+
+<!-- 9. 한계와 다음 단계 -->
+<section class="slide">
+  <div class="kicker">한계와 다음 단계</div>
+  <h2>할 수 없는 것을 먼저 밝힙니다</h2>
+  <div class="two">
+    <div class="card">
+      <h3>한계</h3>
+      <ul>
+        <li>숫자 없는 주장("성능이 뛰어남")은 금지어 외에는 못 잡음 → 직원 최종 검수</li>
+        <li>범용 비전 모델의 장비 인식 정확도 <span class="todo">[n장 중 n장]</span> → 반자동으로 시작</li>
+        <li>실제 고객 사진 운영 시 API 데이터 정책 확인 필요</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>다음 단계</h3>
+      <ul>
+        <li>OCR 자동 모자이크 (IP·내선번호·간판)</li>
+        <li>사진 위에 문구를 얹은 카드뉴스 이미지</li>
+        <li>잠재고객용 "우리 사무실에도 될까?" 진단 페이지 — 홈페이지의 "현장 사진 보내주세요"를 자동화</li>
+      </ul>
+    </div>
+  </div>
+  <div class="no">9</div>
+</section>
+
+<!-- 10. 마무리 -->
+<section class="slide cover">
+  <div class="kicker">현장단서</div>
+  <h1>사진은 증거가 되고,<br>주장은 근거를 갖습니다</h1>
+  <div class="sub" style="margin-bottom:24px">팀 T-Ad · 안영진 · 이경민 · 이용준 · 김민성</div>
+  <div class="meta">github.com/Project100miliondallorsRichMan/T-Ad</div>
+  <div class="no">10</div>
+</section>
+
+</body>
+</html>

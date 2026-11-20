@@ -2,7 +2,7 @@
 
 > 설치 현장 사진을 티링크 기술의 증거로 바꿔, 회사가 승인한 제품 근거로만 업종별 홍보 콘텐츠를 만들고 근거 없는 수치는 코드로 걸러 냅니다.
 
-AI 스마트워크톤 트랙 A · 티링크 과제 · [기획서 PDF](docs/현장단서_기획서_v4.pdf)
+AI 스마트워크톤 트랙 A · 티링크 과제 · 팀 T-Ad · [기획서](docs/현장단서_기획서_v4.pdf) · [발표 자료](docs/slides.pdf) · [예상 질문](docs/qna.md)
 
 <!-- TODO(문서 담당): 시연 GIF를 docs/demo.gif로 넣고 아래 주석을 푼다 -->
 <!-- ![시연](docs/demo.gif) -->
@@ -69,10 +69,11 @@ streamlit run app.py
 
 ## 팀
 
-<!-- TODO(PM): 이름과 역할 -->
-| 이름 | 역할 |
-|---|---|
-| 안영진 | PM·발표 |
-| 이경민 | 앱·배포 |
-| 이용준 | AI·프롬프트·지식 베이스 |
-| 김민성 | 팩트체크·테스트·시연 |
+팀 **T-Ad**
+
+| 이름 | GitHub | 역할 | 담당 |
+|---|---|---|---|
+| 안영진 | [MICcall2004](https://github.com/MICcall2004) | PM·발표 | 주최 측 확인, 시간 측정, 발표 자료, README |
+| 이경민 | [YelPle](https://github.com/YelPle) | 앱·배포 | Streamlit 화면, 배포, Gemini 연동 |
+| 이용준 | [yongtrol](https://github.com/yongtrol) | AI·프롬프트·지식 베이스 | 프롬프트, 사진 분석, 지식 베이스 검증 |
+| 김민성 | [minstouch](https://github.com/minstouch) | 팩트체크·테스트·시연 | 코드 팩트체크, 테스트, 시연 녹화 |
