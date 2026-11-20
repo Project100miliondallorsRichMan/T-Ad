@@ -1,0 +1,118 @@
+"""현장단서: 설치 사진 → 분석 → 근거 매칭 → 생성 → 검수"""
+import json
+import os
+from pathlib import Path
+
+import streamlit as st
+
+import factcheck
+import llm
+
+KB = json.loads((Path(__file__).parent / "data" / "knowledge_base.json").read_text(encoding="utf-8"))
+
+
+def secret(name: str, default: str | None = None) -> str | None:
+    try:
+        return st.secrets[name]
+    except Exception:  # secrets.toml이 없으면 환경변수로
+        return os.environ.get(name, default)
+
+
+API_KEY = secret("GEMINI_API_KEY")
+MODEL = secret("GEMINI_MODEL", "gemini-2.5-flash")
+
+st.set_page_config(page_title="현장단서", layout="wide")
+st.title("현장단서")
+st.caption("설치 사진을 기술의 증거로 · 사진 → 분석 → 근거 매칭 → 생성 → 직원 검수")
+
+if not API_KEY:
+    st.error("GEMINI_API_KEY가 없습니다. .streamlit/secrets.toml 또는 환경변수에 넣어 주세요.")
+    st.stop()
+
+with st.sidebar:
+    product_id = st.selectbox("제품", list(KB["products"]), format_func=lambda k: KB["products"][k]["name"])
+    industry = st.selectbox("업종", list(KB["industry_angles"]))
+    st.caption(f"이 업종의 관심사: {KB['industry_angles'][industry]}")
+
+# 1. 사진 업로드
+st.header("1. 사진 업로드")
+checked = st.checkbox("사진 속 IP 스티커·내선번호·패치패널 라벨·얼굴·간판이 가려졌거나 없음을 확인했습니다.")
+files = st.file_uploader(
+    "설치 전·후 사진", type=["jpg", "jpeg", "png", "webp"], accept_multiple_files=True, disabled=not checked
+)
+if files:
+    cols = st.columns(min(len(files), 4))
+    for i, f in enumerate(files):
+        cols[i % len(cols)].image(f, caption=f"사진 {i + 1}")
+
+    if st.button("사진 분석", type="primary"):
+        with st.spinner("사진을 읽는 중..."):
+            try:
+                st.session_state.analysis = llm.analyze_photos(
+                    API_KEY, MODEL, [(f.getvalue(), f.type) for f in files], KB
+                )
+                st.session_state.pop("content", None)
+            except Exception as e:
+                st.error(f"사진 분석 실패: {e}")
+
+# 2. 직원 확인
+a = st.session_state.get("analysis")
+if a:
+    st.header("2. 태그 확인 (직원)")
+    cands = [t for t in a.get("install_type_candidates", []) if t in KB["install_types"]]
+    install_type = st.selectbox(
+        "설치 형태", KB["install_types"], index=KB["install_types"].index(cands[0]) if cands else 0
+    )
+    tags = st.multiselect(
+        "문제 태그", KB["problem_tags"],
+        default=[t for t in a.get("problem_tag_candidates", []) if t in KB["problem_tags"]],
+    )
+    notes = st.text_area(
+        "사진 설명 — 틀린 부분은 고쳐 주세요. 여기 적은 수치는 '현장 확인' 근거로 인정됩니다.",
+        "\n".join(f"사진 {p.get('index')}: {p.get('description', '')}" for p in a.get("photos", [])),
+        height=140,
+    )
+    if a.get("uncertain"):
+        st.info("AI가 확신하지 못한 점: " + " / ".join(a["uncertain"]))
+
+    if st.button("콘텐츠 생성", type="primary"):
+        with st.spinner("근거를 맞춰 글을 쓰는 중..."):
+            try:
+                st.session_state.content = llm.generate_content(
+                    API_KEY, MODEL, KB, product_id, industry, install_type, tags, notes
+                )
+                st.session_state.notes = notes
+                for k in ("blog_edit", "cards_edit"):  # 새로 생성하면 이전 수정본을 버린다
+                    st.session_state.pop(k, None)
+            except Exception as e:
+                st.error(f"생성 실패: {e}")
+
+# 3. 검수
+c = st.session_state.get("content")
+if c:
+    st.header("3. 검수 · 코드 팩트체크")
+    allowed = factcheck.build_allowed(
+        factcheck.sources_from_kb(KB, product_id) + [(st.session_state.get("notes", ""), "현장 확인(직원)")]
+    )
+    blog = st.text_area(
+        "블로그 글 (수정하면 아래 검사가 바로 다시 돌아갑니다)",
+        f"{c['blog']['title']}\n\n{c['blog']['body']}", height=280, key="blog_edit",
+    )
+    cards = st.text_area(
+        "카드뉴스 5장 문구",
+        "\n\n".join(f"[{x.get('no')}장] {x.get('headline', '')}\n{x.get('text', '')}\n(사진: {x.get('photo', '')})"
+                    for x in c.get("cards", [])),
+        height=280, key="cards_edit",
+    )
+    for label, text in (("블로그", blog), ("카드뉴스", cards)):
+        found = factcheck.check(text, allowed, KB["banned_phrases"])
+        bad = sum(f.status != "ok" for f in found)
+        st.subheader(f"{label}: 확인 필요 {bad}건 · 근거 확인 {len(found) - bad}건")
+        st.markdown(factcheck.highlight(text, found), unsafe_allow_html=True)
+
+    if c.get("used_claims"):
+        st.caption("AI가 사용했다고 밝힌 근거: " + ", ".join(c["used_claims"]))
+    st.download_button(
+        "검수본 내려받기 (.md)", f"# 블로그\n\n{blog}\n\n# 카드뉴스\n\n{cards}\n",
+        file_name="hyunjang_content.md",
+    )

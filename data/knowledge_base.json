@@ -1,0 +1,53 @@
+{
+  "_note": "출처는 팀 기획안(tlinkcrm.com 조사) 기준. 발표 전 원문 페이지와 대조할 것. 회사가 증빙할 수 있는 문구만 남긴다.",
+  "company": {
+    "name": "㈜티링크앤주인닷컴",
+    "claims": [
+      {"id": "co-founded", "text": "2006년 설립된 기업 통신 전문 업체", "source": "tlinkcrm.com 회사소개"},
+      {"id": "co-onestop", "text": "인터넷전화·콜센터·AI 녹취·CRM을 직접 개발하고 설치·유지보수까지 한다", "source": "tlinkcrm.com 회사소개"}
+    ]
+  },
+  "products": {
+    "ai_recording": {
+      "name": "티링크 AI 녹취",
+      "claims": [
+        {"id": "rec-mirroring", "text": "패킷 미러링 방식이라 기존 전화기·회선을 교체하지 않아도 된다", "source": "tlinkcrm.com AI 녹취"},
+        {"id": "rec-carrier", "text": "통신사와 관계없이 설치할 수 있다", "source": "tlinkcrm.com AI 녹취"},
+        {"id": "rec-stt", "text": "통화·회의를 자동 녹음하고 STT로 변환·요약한다", "source": "tlinkcrm.com AI 녹취"},
+        {"id": "rec-aes", "text": "녹취 파일을 AES256 방식으로 암호화한다", "source": "tlinkcrm.com AI 녹취"},
+        {"id": "rec-success", "text": "녹취 성공률 99%", "note": "회사 발표 수치", "source": "tlinkcrm.com AI 녹취"},
+        {"id": "rec-scale", "text": "최대 3,000석 규모 구축 사례(한국전력)", "source": "tlinkcrm.com AI 녹취"},
+        {"id": "patent-arm", "text": "ARM CPU 기반 휴대용 녹취서버 특허(제10-2599434호, 2023년)", "source": "tlinkcrm.com 특허"}
+      ]
+    },
+    "school_recording": {
+      "name": "학교용 녹취",
+      "claims": [
+        {"id": "sch-all", "text": "교내 070 전화 전체를 녹취한다", "source": "tlinkcrm.com 학교용 녹취"},
+        {"id": "sch-noreplace", "text": "전화기 교체 없이 1회 150만 원으로 도입한다", "source": "tlinkcrm.com 학교용 녹취"},
+        {"id": "sch-s2b", "text": "S2B 학교장터에서 구매할 수 있다", "source": "tlinkcrm.com 학교용 녹취"},
+        {"id": "sch-count", "text": "150여 개 학교 도입", "note": "회사 발표 수치", "source": "tlinkcrm.com 학교용 녹취"}
+      ]
+    },
+    "tlink_on": {
+      "name": "티링크 온",
+      "claims": [
+        {"id": "on-radio", "text": "LTE·Wi-Fi 기반 업무용 무전으로 거리 제한이 없다", "source": "tlinkcrm.com 티링크 온"},
+        {"id": "on-translate", "text": "AI 실시간 통역 30개 언어 지원", "source": "tlinkcrm.com 티링크 온"},
+        {"id": "on-log", "text": "무전 내용을 자동으로 기록·요약하고 음성과 사진으로 작업보고를 한다", "source": "tlinkcrm.com 티링크 온"},
+        {"id": "patent-translate", "text": "다국적 작업자 대상 다중 동시 통역 기반 작업 지시 전달 시스템 특허(제10-3014475호, 2026년)", "source": "tlinkcrm.com 특허"}
+      ]
+    }
+  },
+  "install_types": ["스탠드형", "랙거치형", "미러링 스위치허브"],
+  "problem_tags": ["단자함 공간 부족", "기존 전화기 유지 필요", "서버랙 공간 부족", "배선 정리 필요", "다수 회선 동시 녹취", "사무실 밖 현장"],
+  "industry_angles": {
+    "공공·복지": "민원 통화 기록, 직원 보호, 기존 전화 환경 유지",
+    "교육(학교)": "교권 보호, S2B 학교장터 구매, 전화기 교체 없는 도입",
+    "콜센터·기업": "통화 기록, 상담 품질 관리, 경영 리포트",
+    "금융": "통화 기록 보관, 보안(암호화)",
+    "의료": "환자 문의 통화 기록, 기존 전화 환경 유지",
+    "건설·산업": "외국인 근로자 통역, 작업 지시 전달, 작업보고"
+  },
+  "banned_phrases": ["업계 최고", "국내 최대", "국내 유일", "최고", "최초", "1위", "유일", "완벽", "100%", "무조건", "보장", "최저가"]
+}
