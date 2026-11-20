@@ -14,6 +14,8 @@ ROOT = Path(__file__).parent
 KB = json.loads((ROOT / "data" / "knowledge_base.json").read_text(encoding="utf-8"))
 SAMPLE_CASE_PATH = ROOT / "data" / "sample_case.json"
 
+DEFAULT_MODEL = "gemini-3.8-flash"
+
 # 사진·사례가 바뀌면 함께 지워야 하는 결과들
 RESULT_KEYS = ("analysis", "content", "generated_meta", "notes", "blog_edit", "cards_edit", "thumbs")
 
@@ -72,7 +74,7 @@ def _run_generate(api_key: str, model: str, product_id: str, industry: str,
 
 
 API_KEY = _get_secret("GEMINI_API_KEY")
-MODEL = _get_secret("GEMINI_MODEL", "gemini-2.5-flash") or "gemini-2.5-flash"
+MODEL = _get_secret("GEMINI_MODEL", DEFAULT_MODEL) or DEFAULT_MODEL
 
 st.title("T-Ad")
 st.caption("설치 사진을 기술의 증거로 · 사진 → 분석 → 근거 매칭 → 생성 → 직원 검수")
@@ -86,7 +88,7 @@ if not API_KEY:
 - **로컬 실행**: `.streamlit/secrets.toml.example`을 `.streamlit/secrets.toml`로 복사 후 입력
         """
     )
-    st.code('GEMINI_API_KEY = "AIza..."\nGEMINI_MODEL = "gemini-2.5-flash"', language="toml")
+    st.code(f'GEMINI_API_KEY = "발급받은_키"\nGEMINI_MODEL = "{DEFAULT_MODEL}"', language="toml")
     st.stop()
 
 st.markdown(ui.CSS, unsafe_allow_html=True)

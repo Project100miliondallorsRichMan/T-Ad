@@ -55,7 +55,7 @@ python tests/test_app_deploy.py
 3. 배포 화면의 **App settings → Secrets**에 아래 형식으로 키를 등록합니다 (`.streamlit/secrets.toml` 파일 자체는 커밋하지 않습니다).
    ```toml
    GEMINI_API_KEY = "발급받은_Gemini_API_키"
-   GEMINI_MODEL = "gemini-2.5-flash"
+   GEMINI_MODEL = "gemini-3.8-flash"
    ```
 4. 현장 사진이 없을 때는 왼쪽 사이드바의 **대표 설치 사례 불러오기**로 전체 흐름을 바로 시연할 수 있습니다.
 
