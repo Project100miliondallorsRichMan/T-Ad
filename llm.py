@@ -16,6 +16,20 @@ def _render(name: str, **values: str) -> str:
     return text
 
 
+def _parse_json(raw: str | None) -> dict:
+    if not raw or not raw.strip():
+        raise ValueError("모델이 빈 응답을 반환했습니다.")
+    text = raw.strip()
+    if text.startswith("```"):
+        lines = text.splitlines()
+        if lines and lines[0].startswith("```"):
+            lines = lines[1:]
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]
+        text = "\n".join(lines).strip()
+    return json.loads(text)
+
+
 def _ask_json(api_key: str, model: str, contents: list) -> dict:
     # 클라이언트를 변수로 잡아 둬야 요청 전에 닫히지 않는다(google-genai 3.x).
     with genai.Client(api_key=api_key) as client:
@@ -24,7 +38,7 @@ def _ask_json(api_key: str, model: str, contents: list) -> dict:
             contents=contents,
             config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.4),
         )
-    return json.loads(resp.text)
+    return _parse_json(getattr(resp, "text", None))
 
 
 def analyze_photos(api_key: str, model: str, images: list[tuple[bytes, str]], kb: dict) -> dict:
