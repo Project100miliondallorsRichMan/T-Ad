@@ -20,7 +20,7 @@ def secret(name: str, default: str | None = None) -> str | None:
 
 
 API_KEY = secret("GEMINI_API_KEY")
-MODEL = secret("GEMINI_MODEL", "gemini-2.5-flash")
+MODEL = secret("GEMINI_MODEL", "gemini-3.8-flash")
 
 st.set_page_config(page_title="T-Ad", layout="wide")
 st.title("T-Ad")
