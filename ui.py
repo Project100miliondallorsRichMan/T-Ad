@@ -30,6 +30,16 @@ CSS = """<style>
 .tad-card-h{font-size:17px;font-weight:800;line-height:1.35;margin-bottom:6px}
 .tad-card-t{font-size:13px;line-height:1.5;opacity:.95}
 .tad-card-h div,.tad-card-t div{line-height:inherit!important}
+@media (max-width:640px){
+  .tad-steps{gap:4px}
+  .tad-step{padding:8px 4px;font-size:12px;text-align:center;line-height:1.3}
+  .tad-step b{display:block;margin:0 auto 4px}
+  .tad-badge{padding:14px 16px;font-size:18px}
+  .tad-badge small{font-size:13px}
+  .tad-cards{grid-template-columns:repeat(2,1fr);gap:8px}
+  .tad-card-h{font-size:14px}
+  .tad-card-t{font-size:12px}
+}
 </style>"""
 
 STEPS = ["사진 업로드", "태그 확인", "콘텐츠 생성", "검수"]

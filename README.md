@@ -42,18 +42,37 @@ cp .streamlit/secrets.toml.example .streamlit/secrets.toml   # GEMINI_API_KEY �
 streamlit run app.py
 ```
 
-테스트: `python tests/test_factcheck.py`
+테스트:
+```bash
+python tests/test_factcheck.py
+python tests/test_app_deploy.py
+```
+
+## 배포 (Streamlit Community Cloud)
+
+1. GitHub 저장소(`main` 브랜치)를 [Streamlit Community Cloud](https://share.streamlit.io/)에 연결합니다.
+2. **Main file path**를 `app.py`, Python 버전을 `.python-version`(`3.12`) 기준으로 지정합니다.
+3. 배포 화면의 **App settings → Secrets**에 아래 형식으로 키를 등록합니다 (`.streamlit/secrets.toml` 파일 자체는 커밋하지 않습니다).
+   ```toml
+   GEMINI_API_KEY = "발급받은_Gemini_API_키"
+   GEMINI_MODEL = "gemini-3.8-flash"
+   ```
+4. 현장 사진이 없을 때는 왼쪽 사이드바의 **대표 설치 사례 불러오기**로 전체 흐름을 바로 시연할 수 있습니다.
 
 ## 폴더 구조
 
 | 경로 | 내용 |
 |---|---|
-| `app.py` | Streamlit 화면 (업로드 → 태그 확인 → 생성 → 검수) |
+| `app.py` | Streamlit 화면 (업로드 → 태그 확인 → 생성 → 검수 · 복사) |
 | `llm.py` | Gemini 호출 |
+| `utils.py` | 이미지 경량화·EXIF 보정, 시크릿 조회, 샘플/내보내기 유틸리티 |
 | `prompts/` | 사진 분석·콘텐츠 생성 프롬프트 원문 |
 | `factcheck.py` | 규칙 기반 수치·금지 표현 검증 |
 | `data/knowledge_base.json` | 회사가 승인한 제품 근거 (출처 포함) |
-| `tests/` | 팩트체크 테스트 |
+| `data/sample_case.json` | 대표 설치 사례 1건 (시연·테스트용) |
+| `.streamlit/config.toml` | Streamlit Cloud 서버·업로드·테마 설정 |
+| `.github/workflows/ci.yml` | 푸시·PR 시 문법 및 단위 테스트 자동 검증 |
+| `tests/` | 팩트체크 및 앱·배포 테스트 |
 | `docs/` | 기획서, 발표 자료, 시연 GIF |
 
 ## 확산 가능성
