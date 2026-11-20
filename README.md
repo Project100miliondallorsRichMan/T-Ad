@@ -67,6 +67,23 @@ streamlit run app.py
 - 다음 단계: OCR 자동 모자이크, 카드뉴스 이미지 렌더링, 잠재고객용 "우리 사무실에도 될까?" 진단 페이지.
 - 지식 베이스 수치는 공개 홈페이지 기준이며 회사의 최종 승인이 필요합니다.
 
+## 협업 방식: GitHub Flow
+
+1. `main`은 항상 실행 가능한 상태로 둡니다. Streamlit Cloud는 `main`을 배포합니다.
+2. 작업마다 `main`에서 브랜치를 만듭니다. 이름은 `종류/이슈번호-짧은설명` (예: `feat/8-reset-on-new-photo`, `fix/2-gemini-client`, `docs/11-slides`).
+3. 작게 자주 커밋하고 push합니다. 커밋 메시지는 `feat:`, `fix:`, `docs:`, `test:`, `chore:`로 시작합니다.
+4. Pull Request를 엽니다. 본문에 `closes #이슈번호`를 쓰면 머지할 때 이슈가 닫힙니다.
+5. 팀원 1명이 확인하고 승인하면 머지합니다. 대회 중에는 리뷰를 5분 안에 끝냅니다.
+6. 머지한 브랜치는 지우고, 다른 팀원은 `git pull`로 최신 `main`을 받습니다.
+
+```bash
+git switch main && git pull
+git switch -c feat/8-reset-on-new-photo
+git commit -am "feat: 사진을 바꾸면 분석 결과 초기화"
+git push -u origin feat/8-reset-on-new-photo
+gh pr create --fill --body "closes #8"
+```
+
 ## 팀
 
 팀 **T-Ad**
