@@ -34,7 +34,7 @@
       "name": "티링크 온",
       "claims": [
         {"id": "on-radio", "text": "LTE·Wi-Fi 기반 업무용 무전으로 거리 제한이 없다", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)"},
-        {"id": "on-translate", "text": "AI 실시간 통역 30개 언어 이상 지원(부가서비스)", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)", "note": "홈페이지 표기는 '30개국 이상'"},
+        {"id": "on-translate", "text": "AI 실시간 통역 30개국 이상 지원(부가서비스)", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)", "note": "홈페이지 표기 그대로. 언어 수와 나라 수는 다르므로 '30개 언어'로 바꿔 쓰지 않는다"},
         {"id": "on-log", "text": "무전 통화와 통역 세션을 서버에 자동 기록·요약하고, 음성과 사진으로 작업보고를 한다", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)"},
         {"id": "patent-translate", "text": "다국적 작업자 대상 다중 동시 통역 기반 작업 지시 전달 시스템 특허(제10-3014475호, 2026년)", "source": "회사소개 (https://www.tlinkcrm.com/info.php) 특허 — 2026.09.01 등록, 연혁 (https://www.tlinkcrm.com/history.php)"}
       ]
