@@ -79,4 +79,4 @@
 
 ## 테스트
 
-`python tests/test_factcheck.py`: 기존 8개 + 이번에 추가한 7개, 모두 15개 통과.
+`python tests/test_factcheck.py`: 기존 9개(main의 `30개국` 테스트 포함) + 이번에 추가한 7개, 모두 16개 통과.
