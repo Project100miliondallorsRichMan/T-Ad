@@ -19,7 +19,7 @@ def secret(name: str, default: str | None = None) -> str | None:
         return os.environ.get(name, default)
 
 
-API_KEY = secret("GEMINI_API_KEY")
+API_KEY = secret("AQ.Ab8RN6KKtB3nGYe1a9H2b0l8yXaip1Nol-abaaQ0UkohwqRwfg")
 MODEL = secret("GEMINI_MODEL", "gemini-3.8-flash")
 
 st.set_page_config(page_title="T-Ad", layout="wide")
