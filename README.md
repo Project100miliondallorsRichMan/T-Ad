@@ -2,7 +2,7 @@
 
 > 설치 현장 사진을 티링크 기술의 증거로 바꿔, 회사가 승인한 제품 근거로만 업종별 홍보 콘텐츠를 만들고 근거 없는 수치는 코드로 걸러 냅니다.
 
-AI 스마트워크톤 트랙 A · 티링크 과제 · 팀 프로젝트100 · [기획서](docs/T-Ad_기획서_v4.pdf) · [발표 자료](docs/slides.pdf) · [예상 질문](docs/qna.md)
+AI 스마트워크톤 트랙 A · 티링크 과제 · 팀 프로젝트100 · [기획서](docs/T-Ad_기획서_v4.pdf) · [발표 자료](docs/slides.pdf) · [발표 대본](docs/script.md) · [예상 질문](docs/qna.md)
 
 <!-- TODO(문서 담당): 시연 GIF를 docs/demo.gif로 넣고 아래 주석을 푼다 -->
 <!-- ![시연](docs/demo.gif) -->
