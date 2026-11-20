@@ -18,13 +18,29 @@ def _render(name: str, **values: str) -> str:
 
 def _ask_json(api_key: str, model: str, contents: list) -> dict:
     # 클라이언트를 변수로 잡아 둬야 요청 전에 닫히지 않는다(google-genai 3.x).
-    with genai.Client(api_key=api_key) as client:
+    # 시간 제한·재시도 1회: 기본값은 429/5xx에서 끝없이 재시도해 화면이 멈춘 것처럼 보인다.
+    opts = types.HttpOptions(timeout=90_000, retry_options=types.HttpRetryOptions(attempts=2))
+    with genai.Client(api_key=api_key, http_options=opts) as client:
         resp = client.models.generate_content(
             model=model,
             contents=contents,
             config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.4),
         )
     return json.loads(resp.text)
+
+
+def friendly_error(e: Exception) -> str:
+    """시연 중에도 다음 행동을 알 수 있게 API 오류를 한국어 안내로 바꾼다."""
+    msg = str(e)
+    if "RESOURCE_EXHAUSTED" in msg or "429" in msg:
+        return "API 사용량 한도를 넘었습니다. 다른 API 키를 쓰거나 한도가 풀린 뒤 다시 시도하세요. (" + msg[:120] + ")"
+    if any(s in msg for s in ("UNAVAILABLE", "DEADLINE_EXCEEDED", "503", "504", "timed out", "Timeout")):
+        return "AI 서버가 바쁘거나 응답이 늦습니다. 잠시 후 다시 눌러 주세요."
+    if "API key not valid" in msg or "PERMISSION_DENIED" in msg:
+        return "API 키가 올바르지 않습니다. .streamlit/secrets.toml의 GEMINI_API_KEY를 확인하세요."
+    if "NOT_FOUND" in msg:
+        return "모델을 찾을 수 없습니다. secrets의 GEMINI_MODEL을 확인하세요. (" + msg[:120] + ")"
+    return msg
 
 
 def analyze_photos(api_key: str, model: str, images: list[tuple[bytes, str]], kb: dict) -> dict:

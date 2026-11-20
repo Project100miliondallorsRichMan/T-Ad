@@ -60,7 +60,7 @@ if files:
                 st.session_state.pop("content", None)
                 st.rerun()  # 단계 표시를 바로 갱신
             except Exception as e:
-                st.error(f"사진 분석 실패: {e}")
+                st.error(f"사진 분석 실패: {llm.friendly_error(e)}")
 
 # 2. 직원 확인
 a = st.session_state.get("analysis")
@@ -93,7 +93,7 @@ if a:
                     st.session_state.pop(k, None)
                 st.rerun()
             except Exception as e:
-                st.error(f"생성 실패: {e}")
+                st.error(f"생성 실패: {llm.friendly_error(e)}")
 
 # 3. 검수
 c = st.session_state.get("content")
