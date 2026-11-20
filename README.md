@@ -4,8 +4,9 @@
 
 AI 스마트워크톤 트랙 A · 티링크 과제 · 팀 프로젝트100 · [기획서](docs/T-Ad_기획서_v4.pdf) · [발표 자료](docs/slides.pdf) · [예상 질문](docs/qna.md)
 
-<!-- TODO(문서 담당): 시연 GIF를 docs/demo.gif로 넣고 아래 주석을 푼다 -->
-<!-- ![시연](docs/demo.gif) -->
+![시연: 사진 업로드 → 분석 → 생성 → 근거 없는 수치를 넣으면 '확인 필요' → 지우면 사라짐](docs/demo.gif)
+
+<sub>다시 녹화: `streamlit run app.py` 실행 후 `python scripts/record_demo.py` (Gemini 호출 2회)</sub>
 
 ## 문제
 
