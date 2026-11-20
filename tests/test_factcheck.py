@@ -63,6 +63,12 @@ def test_highlight_escapes_html():
     assert "<b>" not in html and "&lt;b&gt;" in html and "확인 필요" in html
 
 
+# 홈페이지 표기 '30개국'은 통과, 나라 수를 언어 수로 바꿔 쓴 '30개 언어'는 '확인 필요'
+def test_countries_not_languages():
+    assert run("30개국 이상 실시간 통역", product="tlink_on") == [("30개국", "ok")]
+    assert run("30개 언어 실시간 통역", product="tlink_on") == [("30개 언어", "unverified")]
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):

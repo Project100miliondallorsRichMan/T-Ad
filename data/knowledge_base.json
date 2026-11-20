@@ -1,41 +1,42 @@
 {
-  "_note": "출처는 팀 기획안(tlinkcrm.com 조사) 기준. 발표 전 원문 페이지와 대조할 것. 회사가 증빙할 수 있는 문구만 남긴다.",
+  "_note": "2026-11-20 tlinkcrm.com 원문과 대조함(이슈 #4). source에 확인한 페이지를 적었다. 회사의 최종 승인은 별도로 필요하다. 회사가 증빙할 수 있는 문구만 남긴다.",
   "company": {
     "name": "㈜티링크앤주인닷컴",
     "claims": [
-      {"id": "co-founded", "text": "2006년 설립된 기업 통신 전문 업체", "source": "tlinkcrm.com 회사소개"},
-      {"id": "co-onestop", "text": "인터넷전화·콜센터·AI 녹취·CRM을 직접 개발하고 설치·유지보수까지 한다", "source": "tlinkcrm.com 회사소개"}
+      {"id": "co-founded", "text": "2006년 설립된 정보통신 전문 기업", "source": "회사소개 (https://www.tlinkcrm.com/info.php), 연혁 (https://www.tlinkcrm.com/history.php) — 2006년 8월 29일 설립"},
+      {"id": "co-onestop", "text": "전화솔루션·인터넷전화·인터넷회선·휴대폰부터 PC·네트워크 유지보수까지 기업 통신시스템을 하나로 잇는다", "source": "메인 (https://www.tlinkcrm.com/) 하단 회사 소개 문구"},
+      {"id": "patent-callcenter", "text": "AI 스마트 콜센터 시스템 및 그 운영 방법 특허(제10-2236467호, 2021년)", "source": "회사소개 (https://www.tlinkcrm.com/info.php) 특허 — 2021.03.31 등록"}
     ]
   },
   "products": {
     "ai_recording": {
       "name": "티링크 AI 녹취",
       "claims": [
-        {"id": "rec-mirroring", "text": "패킷 미러링 방식이라 기존 전화기·회선을 교체하지 않아도 된다", "source": "tlinkcrm.com AI 녹취"},
-        {"id": "rec-carrier", "text": "통신사와 관계없이 설치할 수 있다", "source": "tlinkcrm.com AI 녹취"},
-        {"id": "rec-stt", "text": "통화·회의를 자동 녹음하고 STT로 변환·요약한다", "source": "tlinkcrm.com AI 녹취"},
-        {"id": "rec-aes", "text": "녹취 파일을 AES256 방식으로 암호화한다", "source": "tlinkcrm.com AI 녹취"},
-        {"id": "rec-success", "text": "녹취 성공률 99%", "note": "회사 발표 수치", "source": "tlinkcrm.com AI 녹취"},
-        {"id": "rec-scale", "text": "최대 3,000석 규모 구축 사례(한국전력)", "source": "tlinkcrm.com AI 녹취"},
-        {"id": "patent-arm", "text": "ARM CPU 기반 휴대용 녹취서버 특허(제10-2599434호, 2023년)", "source": "tlinkcrm.com 특허"}
+        {"id": "rec-mirroring", "text": "라우터와 패킷 미러링 스위치로 연결해 기존 전화기·회선을 교체하지 않아도 된다", "source": "티링크 AI 녹취 (https://www.tlinkcrm.com/recording.php)"},
+        {"id": "rec-carrier", "text": "LG·SK·KT·삼성SDS 등 통신사와 관계없이 녹취할 수 있다", "source": "티링크 AI 녹취 (https://www.tlinkcrm.com/recording.php)"},
+        {"id": "rec-stt", "text": "통화를 자동 녹음하고 STT로 변환·요약하며, 녹음된 회의도 요약한다", "source": "티링크 AI 녹취 (https://www.tlinkcrm.com/recording.php)"},
+        {"id": "rec-aes", "text": "녹취 파일을 AES256 방식으로 암호화한다", "source": "티링크 AI 녹취 (https://www.tlinkcrm.com/recording.php), 메인 (https://www.tlinkcrm.com/)"},
+        {"id": "rec-success", "text": "녹취 성공률 99%", "note": "회사 발표 수치", "source": "티링크 AI 녹취 (https://www.tlinkcrm.com/recording.php), 메인 (https://www.tlinkcrm.com/)"},
+        {"id": "rec-scale", "text": "최대 3,000석 규모 구축 사례(한국전력)", "source": "티링크 AI 녹취 (https://www.tlinkcrm.com/recording.php) '최대 구축 규모(한국전력 기준, 석)', 연혁 (https://www.tlinkcrm.com/history.php) 2021~2023"},
+        {"id": "patent-arm", "text": "ARM CPU 기반 휴대용 녹취서버 특허(제10-2599434호, 2023년)", "source": "회사소개 (https://www.tlinkcrm.com/info.php) 특허 — 2023.11.02 등록, 연혁 (https://www.tlinkcrm.com/history.php)"}
       ]
     },
     "school_recording": {
       "name": "학교용 녹취",
       "claims": [
-        {"id": "sch-all", "text": "교내 070 전화 전체를 녹취한다", "source": "tlinkcrm.com 학교용 녹취"},
-        {"id": "sch-noreplace", "text": "전화기 교체 없이 1회 150만 원으로 도입한다", "source": "tlinkcrm.com 학교용 녹취"},
-        {"id": "sch-s2b", "text": "S2B 학교장터에서 구매할 수 있다", "source": "tlinkcrm.com 학교용 녹취"},
-        {"id": "sch-count", "text": "150여 개 학교 도입", "note": "회사 발표 수치", "source": "tlinkcrm.com 학교용 녹취"}
+        {"id": "sch-all", "text": "070 인터넷전화 전용 녹취서버 1대로 교내 모든 전화기를 녹취한다", "source": "학교용 녹취 (https://www.tlinkcrm.com/school.php)"},
+        {"id": "sch-noreplace", "text": "전화기 교체 없이 1회 150만 원(교내 전화기 전체, 월 사용요금 없음)으로 도입한다", "source": "학교용 녹취 (https://www.tlinkcrm.com/school.php) 비용 비교 — 1,500,000원, 구축 시 1회 청구"},
+        {"id": "sch-s2b", "text": "S2B 학교장터에서 구매할 수 있다", "source": "학교용 녹취 (https://www.tlinkcrm.com/school.php) — S2B 물품번호 202310117307066"},
+        {"id": "sch-count", "text": "150여 개 학교 도입", "note": "회사 발표 수치. 연혁에는 '전국 초·중·고 200여 개 녹취서버 납품'으로 기준이 달라 회사 확인 필요", "source": "학교용 녹취 (https://www.tlinkcrm.com/school.php) '전국 150여개 학교가 선택한'"}
       ]
     },
     "tlink_on": {
       "name": "티링크 온",
       "claims": [
-        {"id": "on-radio", "text": "LTE·Wi-Fi 기반 업무용 무전으로 거리 제한이 없다", "source": "tlinkcrm.com 티링크 온"},
-        {"id": "on-translate", "text": "AI 실시간 통역 30개 언어 지원", "source": "tlinkcrm.com 티링크 온"},
-        {"id": "on-log", "text": "무전 내용을 자동으로 기록·요약하고 음성과 사진으로 작업보고를 한다", "source": "tlinkcrm.com 티링크 온"},
-        {"id": "patent-translate", "text": "다국적 작업자 대상 다중 동시 통역 기반 작업 지시 전달 시스템 특허(제10-3014475호, 2026년)", "source": "tlinkcrm.com 특허"}
+        {"id": "on-radio", "text": "LTE·Wi-Fi 기반 업무용 무전으로 거리 제한이 없다", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)"},
+        {"id": "on-translate", "text": "AI 실시간 통역 30개국 이상 지원(부가서비스)", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)", "note": "홈페이지 표기 그대로. 언어 수와 나라 수는 다르므로 '30개 언어'로 바꿔 쓰지 않는다"},
+        {"id": "on-log", "text": "무전 통화와 통역 세션을 서버에 자동 기록·요약하고, 음성과 사진으로 작업보고를 한다", "source": "티링크 온 (https://www.tlinkcrm.com/tlinkon.php)"},
+        {"id": "patent-translate", "text": "다국적 작업자 대상 다중 동시 통역 기반 작업 지시 전달 시스템 특허(제10-3014475호, 2026년)", "source": "회사소개 (https://www.tlinkcrm.com/info.php) 특허 — 2026.09.01 등록, 연혁 (https://www.tlinkcrm.com/history.php)"}
       ]
     }
   },
